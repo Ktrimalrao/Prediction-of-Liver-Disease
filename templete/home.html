@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .background-image {
+        background-image: url("https://media.istockphoto.com/id/1128931450/photo/heart-attack-concept.jpg?s=1024x1024&w=is&k=20&c=T4V7z13uHDY5NpzVgFs_y4b5304gGvt6KYcCuc3Cujs=");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        color: white;
+        text-align: center;
+        font-family: Arial, sans-serif;
+    }
+    
+    .content {
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 20px;
+        border-radius: 8px;
+        max-width: 500px;
+        margin: 0 auto;
+        position: absolute;
+        top: 5px;
+        left: 120px;
+    }
+    
+    .content h1 {
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+    
+    .content form {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Two columns for side-by-side form fields */
+        grid-gap: 10px;
+        margin-bottom: 20px;
+    }
+    
+    .content form input {
+        width: 100%;
+        padding: 10px;
+        border-radius: 4px;
+        border: none;
+    }
+    
+    .content form label {
+        display: block;
+        text-align: left;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    
+    .content button {
+        width: 100%;
+        padding: 12px;
+        background-color: #007bff;
+        border: none;
+        color: white;
+        font-size: 16px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    .content button:hover {
+        background-color: #0056b3;
+    }
+    
+    .content h2 {
+        font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+    <div class="background-image">
+        <div class="content">
+            <div class="main">
+                <div class="header">
+                    <img src="{{ url_for('static', filename = 'images/header-text.png')}}" alt="">
+                    <h2>HEART DISEASE PREDICTION</h2>
+                    <img src="{{ url_for('static', filename = 'images/dots.png')}}" alt="">
+                </div>
+                <h3>Project by Trimal and Pavan</h3>
+                <div class="contact-details">
+                    <a href="https://github.com/Ktrimalrao/Heart-diseases-prediction" rel="noopener noreferrer" target="_blank">
+                        <img src="data:image/png;base64,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" alt="GitHub" style="width: 25px; height: 25px;"/>                   </a>
+                    <a href="https://www.linkedin.com/in/k-trimal-rao-397924253/" rel="noopener noreferrer" target="_blank">
+                        <img src="data:image/png;base64,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" alt="Linkdin" style="width: 25px; height: 25px;"/>
+                    </a>
+                </div>
+            </div>
+            <form action="{{ url_for('predict_datapoint')}}" method="post">
+
+                <label for="Age">Age</label>
+                <input type="text" name="Age" id="Age" placeholder="Age" required="required" />
+
+                <label for="Total_Bilirubin">Total_Bilirubin</label>
+                <input type="text" name="Total_Bilirubin" id="Total_Bilirubinr" placeholder="Total_Bilirubin" required="required" />
+
+                <label for="Direct_Bilirubin">Direct_Bilirubin</label>
+                <input type="text" name="Direct_Bilirubin" id="Direct_Bilirubin" placeholder="Direct_Bilirubin" required="required" />
+
+                <label for="Alamine_Aminotransferase">Alamine_Aminotransferase</label>
+                <input type="text" name="Alkaline_Phosphotase" id="Alkaline_Phosphotase" placeholder="Alkaline_Phosphotase" required="required" />
+
+                <label for="Alamine_Aminotransferase">Alamine_Aminotransferase</label>
+                <input type="text" name="Alamine_Aminotransferase" id="Alamine_Aminotransferase" placeholder="Alamine_Aminotransferase" required="required" />
+
+                <label for="Aspartate_Aminotransferase">Aspartate_Aminotransferase</label>
+                <input type="text" name="Aspartate_Aminotransferase" id="Aspartate_Aminotransferase" placeholder="Aspartate_Aminotransferase" required="required" />
+
+                <label for="Total_Protiens">Total_Protiens</label>
+                <input type="text" name="Total_Protiens" id="Total_Protiens" placeholder="Total_Protiens" required="required" />
+
+                <label for="Albumin">Albumin</label>
+                <input type="text" name="Albumin" id="Albumin" placeholder="Albumin" required="required" />
+
+                <label for="Albumin_and_Globulin_Ratio">Albumin_and_Globulin_Ratio</label>
+                <input type="text" name="Albumin_and_Globulin_Ratio" id="Albumin_and_Globulin_Ratio" placeholder="Albumin_and_Globulin_Ratio" required="required" />
+
+                <label for="Gender_encoded">Gender_encoded</label>
+                <input type="text" name="Gender_encoded" id="Gender_encoded" placeholder="Gender_encoded" required="required" />
+                
+
+                <button type="submit">Predict</button>
+            </form>
+            <h2>
+                Person is: {{result}}
+            </h2>
+        </div>
+    </div>
+</body>
+</html>
